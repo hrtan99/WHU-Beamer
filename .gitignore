@@ -8,3 +8,9 @@
 *.vrb
 *.gz
 *.DS_Store
+*.bbl
+*.blg
+*.dvi
+*.fls
+*.xdv
+*.fdb_latexmk

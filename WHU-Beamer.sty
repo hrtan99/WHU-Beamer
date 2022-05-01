@@ -254,10 +254,10 @@
   corstyle/.style={fonttitle=\bfseries\upshape, colback=thorem-green!5,colframe=thorem-green!80!black},
 }
 
-\tcbmaketheorem{defn}{定义}{defstyle}{DefinitionCounter}{def}
-\tcbmaketheorem{theo}{定理}{theostyle}{TheoremCounter}{theo}
-\tcbmaketheorem{coro}{推论}{corstyle}{CorollaryCounter}{cor}
-\tcbmaketheorem{exm}{例}{corstyle}{ExampleCounter}{eg}
+\newtcbtheorem[number within=section]{defn}{定义}{defstyle}{defn}
+\newtcbtheorem[number within=section]{theo}{定理}{theostyle}{theo}
+\newtcbtheorem[number within=section]{coro}{推论}{corstyle}{cor}
+\newtcbtheorem[number within=section]{exm}{例}{corstyle}{eg}
 
 % ----------------
 

@@ -6,3 +6,6 @@
 - [四川大学Beamer模板](https://github.com/FvNCCR228/SCU_Beamer_Slide-demo)
 - [清华大学Beamer模板](https://github.com/tuna/THU-Beamer-Theme/)
 
+## 注意事项
+请使用xelatex进行编译，否则可能报错。
+
