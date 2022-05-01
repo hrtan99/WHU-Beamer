@@ -1,0 +1,51 @@
+\documentclass[aspectratio=169]{beamer}
+
+\author{某人}
+\title{大规模公交轨迹数据预测}
+\subtitle{毕业设计答辩}
+\institute{武汉大学计算机学院}
+\date{2022年04月26日}
+
+\usepackage[ContentMuticols=true]{WHU-Beamer}
+
+
+% defs
+\def\cmd#1{\texttt{\color{red}\footnotesize $\backslash$#1}}
+\def\env#1{\texttt{\color{blue}\footnotesize #1}}
+
+
+\begin{document}
+
+\kaishu
+\begin{frame}
+    \titlepage
+    
+    % \begin{figure}[htpb]
+    %     \begin{center}
+    %         \includegraphics[width=0.2\linewidth]{pic/Tsinghua_University_Logo.eps}
+    %     \end{center}
+    % \end{figure}
+\end{frame}
+
+\begin{frame}{目录}
+        % \hfill
+        % \parbox[t]{8cm}{
+        %     \begin{minipage}[c][0.75\textheight]{\textwidth}
+                
+        %     \end{minipage}
+        % }
+        \transfade % 淡入淡出
+        \tableofcontents
+\end{frame}
+
+
+% 内容主体
+\include{pages/chapter0}
+\include{pages/chapter1}
+\include{pages/chapter2}
+\include{pages/chapter3}
+\include{pages/chapter4}
+\include{pages/reference}
+\include{pages/thanks}
+
+\end{document}

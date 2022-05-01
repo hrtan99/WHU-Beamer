@@ -1,0 +1,369 @@
+%========== 元信息定义 ==========%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{WHU-Beamer}[2022/04/26 Wuhan University Beamer Theme]
+
+%========== 预定义部分 ==========%
+\RequirePackage{ctex} % 中文支持
+\RequirePackage{hyperref}
+\RequirePackage[T1]{fontenc}
+
+% other packages
+\RequirePackage{latexsym}
+\RequirePackage{amsmath,amsfonts,amssymb} % 数学公式
+\RequirePackage{xcolor} % 代码着色
+
+\RequirePackage{algorithm,algorithmic}
+\RequirePackage{multicol,multirow} 
+\RequirePackage{booktabs} 
+\RequirePackage{calligra} 
+\RequirePackage{graphicx} % 图片支持
+\RequirePackage{pstricks} 
+\RequirePackage{listings} % 代码包
+\RequirePackage{stackengine}
+\RequirePackage{tikz} % tikz: 绘制图像.
+\RequirePackage{tcolorbox} % tcolorbox: 绘制彩色文本框.
+
+% 必须要加
+\tcbuselibrary{theorems, skins, breakable, xparse, listings}
+
+% 定义执行命令. 修改自 sjtubeamer.
+\def\EqualOptionsBeamer{%
+  \relax\fi\ifEqualOptionsBeamer%
+}
+\def\ifEqualOptionsBeamer#1#2{%
+% #1: Option - Key.
+% #2: Option - Value.
+  \newif\ifoption@tmp%
+  \edef\optionkey@tmp{%
+    \csname beamer@scu@#1\endcsname%
+  }%
+  \edef\optionvalue@tmp{#2}%
+  \ifx\optionkey@tmp\optionvalue@tmp\option@tmptrue%
+  \else\option@tmpfalse\fi%
+  \ifoption@tmp%
+}
+
+
+% 代码块颜色
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+\definecolor{halfgray}{gray}{0.55}
+
+\definecolor{cyan}{cmyk}{0.5,0,0.15,0}
+
+
+% ----------------
+% Declare of Colors
+% Confirmed in v1.3b(2022/04/13).
+% Established in v1.2a(2022/03/10).
+% Updated in v1.3a(2022/03/16).
+% ----------------
+% 依据四川大学VIS视觉识别系统(2014), 定义了主题色 scured, scugrey, 与辅助色 scublue, scugreen, scuyellow.
+% 上述定义颜色均采用 CMYK 颜色模式.
+% 注: 常用的颜色模式有 RGB 与 CMYK, 对应 LaTeX 中 rgb(0-1小数制, x/255), RGB(原始数值), cmyk(0-1小数制, x/100).
+% ----------------
+% COLOR:: 锦绣红 - scured    - CMYK(12,92,95,20).
+\definecolor{scured}   {cmyk}{0.12,0.92,0.95,0.20}
+\colorlet{scured10}   {scured!10!white}
+\colorlet{scured20}   {scured!20!white}
+\colorlet{scured30}   {scured!30!white}
+\colorlet{scured40}   {scured!40!white}
+\colorlet{scured50}   {scured!50!white}
+\colorlet{scured60}   {scured!60!white}
+\colorlet{scured70}   {scured!70!white}
+\colorlet{scured80}   {scured!80!white}
+\colorlet{scured90}   {scured!90!white}
+
+% COLOR:: 优雅灰 - scugrey   - CMYK(47,37,37,20).
+\definecolor{scugrey}  {cmyk}{0.47,0.37,0.37,0.00}
+\colorlet{scugrey10}  {scugrey!10!white}
+\colorlet{scugrey20}  {scugrey!20!white}
+\colorlet{scugrey30}  {scugrey!30!white}
+\colorlet{scugrey40}  {scugrey!40!white}
+\colorlet{scugrey50}  {scugrey!50!white}
+\colorlet{scugrey60}  {scugrey!60!white}
+\colorlet{scugrey70}  {scugrey!70!white}
+\colorlet{scugrey80}  {scugrey!80!white}
+\colorlet{scugrey90}  {scugrey!90!white}
+
+% COLOR:: 宝石蓝 - scublue   - CMYK(100,60,0,15).
+\definecolor{scublue}  {cmyk}{1.00,0.60,0.00,0.15}
+\colorlet{scublue10}  {scublue!10!white}
+\colorlet{scublue20}  {scublue!20!white}
+\colorlet{scublue30}  {scublue!30!white}
+\colorlet{scublue40}  {scublue!40!white}
+\colorlet{scublue50}  {scublue!50!white}
+\colorlet{scublue60}  {scublue!60!white}
+\colorlet{scublue70}  {scublue!70!white}
+\colorlet{scublue80}  {scublue!80!white}
+\colorlet{scublue90}  {scublue!90!white}
+
+% COLOR:: 荷叶绿 - scugreen  - CMYK(100,0,90,15).
+\definecolor{scugreen} {cmyk}{1.00,0.00,0.90,0.15}
+\colorlet{scugreen10} {scugreen!10!white}
+\colorlet{scugreen20} {scugreen!20!white}
+\colorlet{scugreen30} {scugreen!30!white}
+\colorlet{scugreen40} {scugreen!40!white}
+\colorlet{scugreen50} {scugreen!50!white}
+\colorlet{scugreen60} {scugreen!60!white}
+\colorlet{scugreen70} {scugreen!70!white}
+\colorlet{scugreen80} {scugreen!80!white}
+\colorlet{scugreen90} {scugreen!90!white}
+
+% COLOR:: 银杏黄 - scuyellow - CMYK(0,40,100,15).
+\definecolor{scuyellow}{cmyk}{0.00,0.40,1.00,0.15}
+\colorlet{scuyellow10}{scuyellow!10!white}
+\colorlet{scuyellow20}{scuyellow!20!white}
+\colorlet{scuyellow30}{scuyellow!30!white}
+\colorlet{scuyellow40}{scuyellow!40!white}
+\colorlet{scuyellow50}{scuyellow!50!white}
+\colorlet{scuyellow60}{scuyellow!60!white}
+\colorlet{scuyellow70}{scuyellow!70!white}
+\colorlet{scuyellow80}{scuyellow!80!white}
+\colorlet{scuyellow90}{scuyellow!90!white}
+% ----------------
+
+\colorlet{ThemeColor}{cyan}
+
+\setbeamersize {
+  text margin left=1.5cm,
+  text margin right=1.5cm
+}
+
+
+\newif\ifbeamer@whu@contentmuticols
+
+% KEY:: BlockDisplay.
+% VALUE:: colorful | followtheme | allgrey.
+\DeclareOptionBeamer{BlockDisplay}{\def\beamer@whu@BlockDisplay{#1}}
+% KEY:: LanguageMode.
+% VALUE:: cn | en.
+\DeclareOptionBeamer{LanguageMode}{\def\beamer@whu@LanguageMode{#1}}
+% KEY:: ColorDisplay [PASSTO:: beamercolorthemescu.sty].
+% VALUE:: JXred | BSblue.
+\DeclareOptionBeamer{ColorDisplay}{\def\beamer@whu@ColorDisplay{#1}}
+
+% 展开后面的内容
+\DeclareOptionBeamer{ContentMuticols}{\csname beamer@whu@contentmuticols#1\endcsname}
+
+\ExecuteOptionsBeamer{%
+  BlockDisplay=colorful,%
+  ContentMuticols=true,%
+  ColorDisplay=JXred,%
+  LanguageMode=cn%
+}
+
+\ProcessOptionsBeamer
+
+% ----------------
+% Beamer Theme Color Mode Layout
+% Confirmed in v1.3b(2022/04/13).
+% Established in v1.3a(2022/03/16).
+% ----------------
+% PrimaryC - 主题色;                  AuxiliaryC - 辅助色;
+% SecondaryAuxiliaryC - 第二辅助色;   IntersperseC - 点缀色;
+% NomalTextC - 普通文本色;            AlertedTextC - 强调文本色;
+% BlockExampleC - Example 区块样式色; BlockDefinitionC - Definition 区块样式色;
+% BlockLemmaC - Lemma 区块样式色;     BlockConditionC - Condition 区块样式色.
+% ----------------
+% \if\EqualOptionsBeamer{ColorDisplay}{JXred}%
+% 	\colorlet{PrimaryC}           {scured}
+% 	\colorlet{AuxiliaryC}         {scugrey50}
+% 	\colorlet{SecondaryAuxiliaryC}{scugrey}
+% 	\colorlet{IntersperseC}       {scured60}
+% 	\colorlet{NomalTextC}         {black}
+% 	\colorlet{AlertedTextC}       {scured90}
+% 	\colorlet{BlockExampleC}      {scugrey!80!black}
+% 	\colorlet{BlockDefinitionC}   {scublue}
+% 	\colorlet{BlockLemmaC}        {scugreen}
+% 	\colorlet{BlockConditionC}    {scuyellow}
+% 	\colorlet{HighlightCodeLineC} {scured10}
+% \else\if\EqualOptionsBeamer{ColorDisplay}{BSblue}%
+% 	\colorlet{PrimaryC}           {scublue}
+% 	\colorlet{AuxiliaryC}         {scugrey50}
+% 	\colorlet{SecondaryAuxiliaryC}{scugrey}
+% 	\colorlet{IntersperseC}       {scublue60}
+% 	\colorlet{NomalTextC}         {black}
+% 	\colorlet{AlertedTextC}       {scublue90}
+% 	\colorlet{BlockExampleC}      {scugrey!80!black}
+% 	\colorlet{BlockDefinitionC}   {scured}
+% 	\colorlet{BlockLemmaC}        {scugreen}
+% 	\colorlet{BlockConditionC}    {scuyellow}
+% 	\colorlet{HighlightCodeLineC} {scublue10}
+% \fi\fi
+% ----------------
+
+
+
+\mode<presentation>
+
+% \newif\ifbeamer@secheader
+% \beamer@secheaderfalse
+
+%\DeclareOptionBeamer{secheader}{\beamer@secheadertrue}
+
+
+% ----------------
+% Background Layout
+% Confirmed in v1.3b(2022/04/13).
+% Established in v1.0a(2021/12/03).
+% Updated in v1.1a(2021/12/31), v1.2a(2022/03/10), v1.3a(2022/03/16).
+% ----------------
+% 设置了主题背景选项 "background=ture" & "background=false".
+% 设置了页眉 logo.
+% ----------------
+
+% 设置 "background.png" 为图片 "bg".
+\pgfdeclareimage[width=\paperwidth]%
+  {bg}{./images/background_white.png}
+% 设置图片 "bg" 为背景图片.
+\usebackgroundtemplate{\pgfuseimage{bg}}
+% 设置 "backgroundofsubsectiontocpage.png" 为图片 "bgofsubsectoc".
+\pgfdeclareimage[width=\paperwidth]%
+  {bgofsubsectoc}{./images/backgroundofsubsectiontocpage.png}
+% 设置 "backgroundoftitlepage.png" 为图片 "bgoftitle".
+\pgfdeclareimage[width=\paperwidth]%
+  {bgoftitle}{./images/backgroundoftitlepage.png}
+
+% 设置 "backgroundoftitlepage(Light).png" 为图片 "bgoftitle".
+% \pgfdeclareimage[width=\paperwidth]%
+%   {bgoftitle}{./images/backgroundoftitlepage(Light).png}
+
+
+% 设置 "SCUname.pdf" 为图片 "logo".
+\pgfdeclareimage[width=6.25em]%
+  {lg}{./images/SCUname.pdf}
+% ----------------
+
+% 设置定理环境
+\def\themytheorem{\thesection.\arabic{mytheorem}}
+\newcounter{TheoremCounter}[section] 
+\newcounter{DefinitionCounter}[section] 
+\newcounter{CorollaryCounter}[section] 
+\newcounter{ExampleCounter}[section] 
+
+\definecolor{thorem-yellow}{cmyk}{0,0.2,0.7,0,1.00}
+\definecolor{thorem-blue}{cmyk}{0.80, 0.13, 0.14, 0.04, 1.00}
+\definecolor{thorem-green}{cmyk}{0.4,0,0.4,0,1.00}
+
+% 设置样式
+\tcbset{
+  defstyle/.style={fonttitle=\bfseries\upshape, colback=thorem-yellow!5,colframe=thorem-yellow!80!black},
+  theostyle/.style={fonttitle=\bfseries\upshape, colback=thorem-blue!5,colframe=thorem-blue!80!black},
+  corstyle/.style={fonttitle=\bfseries\upshape, colback=thorem-green!5,colframe=thorem-green!80!black},
+}
+
+\tcbmaketheorem{defn}{定义}{defstyle}{DefinitionCounter}{def}
+\tcbmaketheorem{theo}{定理}{theostyle}{TheoremCounter}{theo}
+\tcbmaketheorem{coro}{推论}{corstyle}{CorollaryCounter}{cor}
+\tcbmaketheorem{exm}{例}{corstyle}{ExampleCounter}{eg}
+
+% ----------------
+
+% 定义目录输入命令.
+\def\inserttableofcontent{
+  \ifbeamer@whu@contentmuticols%
+    \begin{multicols}{2}
+      \tableofcontents[%
+        sectionstyle=show/shaded,%
+        subsectionstyle=show/shaded/hide,%
+        subsubsectionstyle=show/shaded/hide]%
+    \end{multicols}
+  \else
+    \tableofcontents[%
+      sectionstyle=show/shaded,
+      subsectionstyle=show/shaded/hide,
+      subsubsectionstyle=show/shaded/hide]
+  \fi
+}
+
+
+% 小节前加目录.
+% \AtBeginSubsection[]{%
+%   \begingroup%
+%     \setbeamertemplate{background}{\pgfuseimage{bg}}%
+%     \begin{frame}{目录}
+%       \inserttableofcontent
+%     \end{frame}
+%   \endgroup%
+% }
+
+\useoutertheme[footline=authorinstitute,subsection=false]{miniframes}
+
+\makeatletter % [add curpage/total page at the bottom](http://tex.stackexchange.com/questions/100838/beamer-dresden-theme-miniframes-appeareance-and-frame-number-insertion)
+\newcommand{\frameofframes}{/}
+\newcommand{\setframeofframes}[1]{\renewcommand{\frameofframes}{#1}}
+
+
+% \setbeamertemplate{footline} 
+%   {%
+%     \begin{beamercolorbox}[colsep=1.5pt]{upper separation line foot}
+%     \end{beamercolorbox}
+%     \begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
+%       leftskip=.3cm,rightskip=.3cm plus1fil]{author in head/foot}%
+%       \leavevmode{\usebeamerfont{author in head/foot}\insertshortauthor}%
+%       \hfill%
+%       {\usebeamerfont{institute in head/foot}\usebeamercolor[fg]{institute in head/foot}\insertshortinstitute}%
+%     \end{beamercolorbox}%
+%     \begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
+%       leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+%       {\usebeamerfont{title in head/foot}\insertshorttitle}%
+%       \hfill%
+%       {\usebeamerfont{frame number}\usebeamercolor[fg]{frame number}\insertframenumber~\frameofframes~\inserttotalframenumber}
+%     \end{beamercolorbox}%
+%     \begin{beamercolorbox}[colsep=1.5pt]{lower separation line foot}
+%     \end{beamercolorbox}
+%   }
+\makeatother
+
+\useinnertheme{circles}
+
+%\useoutertheme{default}
+%\useinnertheme[shadow=true]{rounded}
+
+
+
+
+\xdefinecolor{tsinghua}{rgb}{0.455,0.204,0.506}  %RGB#82318E
+\setbeamercolor{footline}{bg=ThemeColor}
+\setbeamercolor{frametitle}{bg=ThemeColor,fg=white}
+\setbeamercolor{title}{bg=ThemeColor}
+\setbeamerfont{frametitle}{size=\large}
+%\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{bibliography item}[text]
+\setbeamertemplate{caption}[numbered]
+
+\setbeamercolor{palette primary}{use=structure,fg=white,bg=structure.fg}
+\setbeamercolor{palette secondary}{use=structure,fg=white,bg=structure.fg!75!black}
+\setbeamercolor{palette tertiary}{use=structure,fg=white,bg=structure.fg!50!black}
+\setbeamercolor{palette quaternary}{fg=white,bg=structure.fg!50!black}
+%\setbeamercolor*{sidebar}{use=structure,bg=structure.fg}
+\setbeamercolor{titlelike}{parent=palette primary}
+
+%% try
+\setbeamercolor{block title}{bg=ThemeColor,fg=white}
+\setbeamercolor*{block title example}{use={normal text,example text},bg=white,fg=ThemeColor}
+\setbeamercolor{fine separation line}{}
+\setbeamercolor{item projected}{fg=white}
+\setbeamercolor{palette sidebar primary}{use=normal text,fg=normal text.fg}
+\setbeamercolor{palette sidebar quaternary}{use=structure,fg=structure.fg}
+\setbeamercolor{palette sidebar secondary}{use=structure,fg=structure.fg}
+\setbeamercolor{palette sidebar tertiary}{use=normal text,fg=normal text.fg}
+%\setbeamercolor{palette sidebar quaternary}{fg=white}
+\setbeamercolor{section in sidebar}{fg=brown}
+\setbeamercolor{section in sidebar shaded}{fg=grey}
+\setbeamercolor{separation line}{}
+\setbeamercolor{sidebar}{bg=ThemeColor}
+\setbeamercolor{sidebar}{parent=palette primary}
+\setbeamercolor{structure}{fg=ThemeColor}
+\setbeamercolor{subsection in sidebar}{fg=brown}
+\setbeamercolor{subsection in sidebar shaded}{fg=grey}
+\AtBeginSection[]{
+	\begin{frame}
+		\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/shaded/hide]
+	\end{frame}
+}
+
+\mode
+<all>

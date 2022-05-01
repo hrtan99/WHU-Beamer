@@ -1,0 +1,10 @@
+*.log
+*.aux
+*.nav
+*.out
+*.listing
+*.snm
+*.toc
+*.vrb
+*.gz
+*.DS_Store
