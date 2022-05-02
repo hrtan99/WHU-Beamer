@@ -4,27 +4,32 @@
 \subsection{定理块}
 
 \begin{frame}
-    \begin{defn}{Definition}
-        Some definition.
+    % 定理环境需要两个必须参数 二者可以为空{} 第一个参数是定理块的名称 第二个参数用于引用
+    \begin{defn}{Definition}{}
+    Some definition.
     \end{defn}
     Here is some description.
-    \begin{theo}{Theorem}
-        Some Theorem.
+    \begin{theo}{Theorem}{}
+    Some Theorem.
     \end{theo}
-    \begin{theo}{Theorem}
-        Some Theorem.
+    \begin{theo}{Theorem}{}
+    Some Theorem.
     \end{theo}
     
 \end{frame}
 
 
 \begin{frame}
-    \begin{coro}{Collary}
+    \begin{coro}{Collary}{}
         Some Collary.
     \end{coro}
 
 \end{frame}
 
 \begin{frame}
-    \lstinputlisting[caption=Scheduler,style=customasm]{codes/hello.c}
+    % For multi-column typesetting of listings the listings package provides the multicols=n option, which in fact is a built-in interface to the multicol package.
+    \lstinputlisting[caption=Scheduler,style=customc,multicols=2]{codes/hello.c}
 \end{frame}
+
+
+

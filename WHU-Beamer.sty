@@ -23,8 +23,13 @@
 \RequirePackage{tikz} % tikz: 绘制图像.
 \RequirePackage{tcolorbox} % tcolorbox: 绘制彩色文本框.
 
-% 必须要加
+% tcolorbox使用对应的库
 \tcbuselibrary{theorems, skins, breakable, xparse, listings}
+\tcbset{listing engine=listings}
+
+% tikz引入shapes
+\usetikzlibrary{shapes}
+
 
 % 定义执行命令. 修改自 sjtubeamer.
 \def\EqualOptionsBeamer{%
@@ -43,6 +48,7 @@
   \ifoption@tmp%
 }
 
+\xdefinecolor{tsinghua}{rgb}{0.455,0.204,0.506}  %RGB#82318E
 
 % 代码块颜色
 \definecolor{deepblue}{rgb}{0,0,0.5}
@@ -53,14 +59,6 @@
 \definecolor{cyan}{cmyk}{0.5,0,0.15,0}
 
 
-% ----------------
-% Declare of Colors
-% Confirmed in v1.3b(2022/04/13).
-% Established in v1.2a(2022/03/10).
-% Updated in v1.3a(2022/03/16).
-% ----------------
-% 依据四川大学VIS视觉识别系统(2014), 定义了主题色 scured, scugrey, 与辅助色 scublue, scugreen, scuyellow.
-% 上述定义颜色均采用 CMYK 颜色模式.
 % 注: 常用的颜色模式有 RGB 与 CMYK, 对应 LaTeX 中 rgb(0-1小数制, x/255), RGB(原始数值), cmyk(0-1小数制, x/100).
 % ----------------
 % COLOR:: 锦绣红 - scured    - CMYK(12,92,95,20).
@@ -126,6 +124,7 @@
 
 \colorlet{ThemeColor}{cyan}
 
+% 设置页面间距
 \setbeamersize {
   text margin left=1.5cm,
   text margin right=1.5cm
@@ -155,44 +154,6 @@
 }
 
 \ProcessOptionsBeamer
-
-% ----------------
-% Beamer Theme Color Mode Layout
-% Confirmed in v1.3b(2022/04/13).
-% Established in v1.3a(2022/03/16).
-% ----------------
-% PrimaryC - 主题色;                  AuxiliaryC - 辅助色;
-% SecondaryAuxiliaryC - 第二辅助色;   IntersperseC - 点缀色;
-% NomalTextC - 普通文本色;            AlertedTextC - 强调文本色;
-% BlockExampleC - Example 区块样式色; BlockDefinitionC - Definition 区块样式色;
-% BlockLemmaC - Lemma 区块样式色;     BlockConditionC - Condition 区块样式色.
-% ----------------
-% \if\EqualOptionsBeamer{ColorDisplay}{JXred}%
-% 	\colorlet{PrimaryC}           {scured}
-% 	\colorlet{AuxiliaryC}         {scugrey50}
-% 	\colorlet{SecondaryAuxiliaryC}{scugrey}
-% 	\colorlet{IntersperseC}       {scured60}
-% 	\colorlet{NomalTextC}         {black}
-% 	\colorlet{AlertedTextC}       {scured90}
-% 	\colorlet{BlockExampleC}      {scugrey!80!black}
-% 	\colorlet{BlockDefinitionC}   {scublue}
-% 	\colorlet{BlockLemmaC}        {scugreen}
-% 	\colorlet{BlockConditionC}    {scuyellow}
-% 	\colorlet{HighlightCodeLineC} {scured10}
-% \else\if\EqualOptionsBeamer{ColorDisplay}{BSblue}%
-% 	\colorlet{PrimaryC}           {scublue}
-% 	\colorlet{AuxiliaryC}         {scugrey50}
-% 	\colorlet{SecondaryAuxiliaryC}{scugrey}
-% 	\colorlet{IntersperseC}       {scublue60}
-% 	\colorlet{NomalTextC}         {black}
-% 	\colorlet{AlertedTextC}       {scublue90}
-% 	\colorlet{BlockExampleC}      {scugrey!80!black}
-% 	\colorlet{BlockDefinitionC}   {scured}
-% 	\colorlet{BlockLemmaC}        {scugreen}
-% 	\colorlet{BlockConditionC}    {scuyellow}
-% 	\colorlet{HighlightCodeLineC} {scublue10}
-% \fi\fi
-% ----------------
 
 
 
@@ -233,7 +194,7 @@
 
 % 设置 "SCUname.pdf" 为图片 "logo".
 \pgfdeclareimage[width=6.25em]%
-  {lg}{./images/SCUname.pdf}
+  {lg}{./images/whulogo_black.png}
 % ----------------
 
 % 设置定理环境
@@ -247,7 +208,7 @@
 \definecolor{thorem-blue}{cmyk}{0.80, 0.13, 0.14, 0.04, 1.00}
 \definecolor{thorem-green}{cmyk}{0.4,0,0.4,0,1.00}
 
-% 设置样式
+% 设置定理块样式
 \tcbset{
   defstyle/.style={fonttitle=\bfseries\upshape, colback=thorem-yellow!5,colframe=thorem-yellow!80!black},
   theostyle/.style={fonttitle=\bfseries\upshape, colback=thorem-blue!5,colframe=thorem-blue!80!black},
@@ -259,6 +220,9 @@
 \newtcbtheorem[number within=section]{coro}{推论}{corstyle}{cor}
 \newtcbtheorem[number within=section]{exm}{例}{corstyle}{eg}
 
+% 注：定理环境在使用时需要两个必须参数 二者可以为空{} 
+% 第一个参数是定理块的名称 第二个参数用于引用
+% ref：https://tex.stackexchange.com/questions/628664/tcolorbox-theorem-environment-doesnt-show-first-character
 % ----------------
 
 
@@ -273,10 +237,11 @@
   showstringspaces=false,
   basicstyle=\footnotesize\ttfamily,
   keywordstyle=\bfseries\color{green!40!black},
-  commentstyle=\itshape\color{purple!40!black},
+  commentstyle=\itshape\color{red!50!green!50!blue!50},
   identifierstyle=\color{blue},
   stringstyle=\color{orange},
 }
+
 
 \lstdefinestyle{customasm}{
   belowcaptionskip=1\baselineskip,
@@ -288,6 +253,8 @@
 }
 
 \lstset{escapechar=@,style=customc,numbers=left,numberstyle=\tiny}
+
+\newcommand{\includecode}[2][c]{\lstinputlisting[caption=#2, escapechar=, style=custom#1]{#2}<!---->}
 % ----------------
 
 % 定义目录输入命令.
@@ -346,6 +313,54 @@
 %   }
 \makeatother
 
+%\logo{\includegraphics[height=1cm]{images/whulogo_black.png}}
+
+% Headline
+% ref：https://tex.stackexchange.com/questions/330817/beamer-template-customization-logo-headline-and-footline?newreg=c99281e2d52846a1abddc869f1cdc120
+\makeatletter
+\setbeamertemplate{headline}{%
+  \leavevmode%
+  \@tempdimb=1ex%
+  \ifnum\beamer@subsectionmax<\beamer@sectionmax%
+    \multiply\@tempdimb by\beamer@sectionmax%
+  \else%
+    \multiply\@tempdimb by\beamer@subsectionmax%
+  \fi%
+  \ifdim\@tempdimb>0pt%
+    \advance\@tempdimb by 1.825ex%
+    \begin{beamercolorbox}[wd=.5\paperwidth,ht=\@tempdimb]{section in head/foot}%
+      \vspace*{1mm}\hspace*{-2mm}%
+      \insertsectionnavigationhorizontal{.5\paperwidth}{}{\hskip0pt plus1filll}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.3\paperwidth,ht=\@tempdimb]{subsection in head/foot}%
+      \vbox to\@tempdimb{\vfil\insertsubsectionnavigation{.5\paperwidth}\vfil}%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.2\paperwidth,ht=\@tempdimb]{subsection in head/foot}%
+      \vbox to\@tempdimb{\vfil\hfill\includegraphics[height=\@tempdimb]{images/whulogo.png} \vfil}
+    \end{beamercolorbox}%    
+  \fi%
+}
+\makeatother
+
+% 设置箭头样式
+% ref：https://tex.stackexchange.com/questions/398326/custom-horizontal-navigation-bar-for-beamer
+\setbeamertemplate{section in head/foot}{%
+    \if\insertsectionheadnumber1
+        \tikz\node[draw=ThemeColor,fill=ThemeColor,shape=signal,very thick,text=white]{\insertsectionhead\hskip.3cm};
+    \else
+        \tikz\node[draw=ThemeColor,fill=ThemeColor,shape=signal,signal from=west, signal to=east,very thick,text=white]     {\insertsectionhead\hskip.3cm};
+  \fi
+}
+
+\setbeamertemplate{section in head/foot shaded}{%
+    \if\insertsectionheadnumber1
+        \tikz\node[draw=ThemeColor,fill=white,shape=signal,very thick,text=ThemeColor]{\insertsectionhead\hskip.3cm};
+    \else
+        \tikz\node[draw=ThemeColor,fill=white,shape=signal,signal from=west, signal to=east,very thick,text=ThemeColor]     {\insertsectionhead\hskip.3cm};
+  \fi
+}
+
+%--------------
 \useinnertheme{circles}
 
 %\useoutertheme{default}
@@ -354,7 +369,6 @@
 
 
 
-\xdefinecolor{tsinghua}{rgb}{0.455,0.204,0.506}  %RGB#82318E
 \setbeamercolor{footline}{bg=ThemeColor}
 \setbeamercolor{frametitle}{bg=ThemeColor,fg=white}
 \setbeamercolor{title}{bg=ThemeColor}
@@ -363,10 +377,11 @@
 \setbeamertemplate{bibliography item}[text]
 \setbeamertemplate{caption}[numbered]
 
+% 设置structure的四种调色板颜色
 \setbeamercolor{palette primary}{use=structure,fg=white,bg=structure.fg}
-\setbeamercolor{palette secondary}{use=structure,fg=white,bg=structure.fg!75!black}
-\setbeamercolor{palette tertiary}{use=structure,fg=white,bg=structure.fg!50!black}
-\setbeamercolor{palette quaternary}{fg=white,bg=structure.fg!50!black}
+\setbeamercolor{palette secondary}{use=structure,fg=white,bg=structure.fg!90!black}
+\setbeamercolor{palette tertiary}{use=structure,fg=white,bg=structure.fg!80!black}
+\setbeamercolor{palette quaternary}{fg=white,bg=structure.fg!80!black}
 %\setbeamercolor*{sidebar}{use=structure,bg=structure.fg}
 \setbeamercolor{titlelike}{parent=palette primary}
 
@@ -375,19 +390,9 @@
 \setbeamercolor*{block title example}{use={normal text,example text},bg=white,fg=ThemeColor}
 \setbeamercolor{fine separation line}{}
 \setbeamercolor{item projected}{fg=white}
-\setbeamercolor{palette sidebar primary}{use=normal text,fg=normal text.fg}
-\setbeamercolor{palette sidebar quaternary}{use=structure,fg=structure.fg}
-\setbeamercolor{palette sidebar secondary}{use=structure,fg=structure.fg}
-\setbeamercolor{palette sidebar tertiary}{use=normal text,fg=normal text.fg}
-%\setbeamercolor{palette sidebar quaternary}{fg=white}
-\setbeamercolor{section in sidebar}{fg=brown}
-\setbeamercolor{section in sidebar shaded}{fg=grey}
+
 \setbeamercolor{separation line}{}
-\setbeamercolor{sidebar}{bg=ThemeColor}
-\setbeamercolor{sidebar}{parent=palette primary}
 \setbeamercolor{structure}{fg=ThemeColor}
-\setbeamercolor{subsection in sidebar}{fg=brown}
-\setbeamercolor{subsection in sidebar shaded}{fg=grey}
 \AtBeginSection[]{
 	\begin{frame}
 		\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/shaded/hide]

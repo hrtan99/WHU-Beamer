@@ -7,5 +7,5 @@
 - [清华大学Beamer模板](https://github.com/tuna/THU-Beamer-Theme/)
 
 ## 注意事项
-请使用xelatex进行编译，否则可能报错。
-
+- 请使用xelatex进行编译，否则可能报错。
+- 依据目前的导航条样式，建议大家PPT分五个Part，每个Part标题四个字概括，如此最为美观。
