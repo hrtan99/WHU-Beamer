@@ -14,3 +14,5 @@
 *.fls
 *.xdv
 *.fdb_latexmk
+*.bcf
+*.run.xml
