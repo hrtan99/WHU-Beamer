@@ -173,11 +173,8 @@
 
 % ----------------
 % Background Layout
-% Confirmed in v1.3b(2022/04/13).
-% Established in v1.0a(2021/12/03).
-% Updated in v1.1a(2021/12/31), v1.2a(2022/03/10), v1.3a(2022/03/16).
 % ----------------
-% 设置了主题背景选项 "background=ture" & "background=false".
+% 设置了主题背景选项 "background=true" & "background=false".
 % 设置了页眉 logo.
 % ----------------
 
@@ -187,20 +184,20 @@
 % 设置图片 "bg" 为背景图片.
 \usebackgroundtemplate{\pgfuseimage{bg}}
 % 设置 "backgroundofsubsectiontocpage.png" 为图片 "bgofsubsectoc".
-\pgfdeclareimage[width=\paperwidth]%
-  {bgofsubsectoc}{./images/backgroundofsubsectiontocpage.png}
+% \pgfdeclareimage[width=\paperwidth]%
+%   {bgofsubsectoc}{./images/backgroundofsubsectiontocpage.png}
 % 设置 "backgroundoftitlepage.png" 为图片 "bgoftitle".
-\pgfdeclareimage[width=\paperwidth]%
-  {bgoftitle}{./images/backgroundoftitlepage.png}
+% \pgfdeclareimage[width=\paperwidth]%
+%   {bgoftitle}{./images/backgroundoftitlepage.png}
 
 % 设置 "backgroundoftitlepage(Light).png" 为图片 "bgoftitle".
 % \pgfdeclareimage[width=\paperwidth]%
 %   {bgoftitle}{./images/backgroundoftitlepage(Light).png}
 
 
-% 设置 "SCUname.pdf" 为图片 "logo".
+% 设置 "whulogo.png" 为图片 "logo".
 \pgfdeclareimage[width=6.25em]%
-  {lg}{./images/whulogo_black.png}
+  {lg}{./images/whulogo.png}
 % ----------------
 
 % 设置定理环境
@@ -263,7 +260,7 @@
 \newcommand{\includecode}[2][c]{\lstinputlisting[caption=#2, escapechar=, style=custom#1]{#2}<!---->}
 % ----------------
 
-% 定义目录输入命令.
+% 定义目录输入命令。可以选择将目录分栏显示。
 \def\inserttableofcontent{
   \ifbeamer@whu@contentmuticols%
     \begin{multicols}{2}
@@ -282,6 +279,12 @@
 
 
 % 小节前加目录.
+\AtBeginSection[]{
+	\begin{frame}
+		\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/shaded/hide]
+	\end{frame}
+}
+
 % \AtBeginSubsection[]{%
 %   \begingroup%
 %     \setbeamertemplate{background}{\pgfuseimage{bg}}%
@@ -298,25 +301,6 @@
 \newcommand{\setframeofframes}[1]{\renewcommand{\frameofframes}{#1}}
 
 
-% \setbeamertemplate{footline} 
-%   {%
-%     \begin{beamercolorbox}[colsep=1.5pt]{upper separation line foot}
-%     \end{beamercolorbox}
-%     \begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
-%       leftskip=.3cm,rightskip=.3cm plus1fil]{author in head/foot}%
-%       \leavevmode{\usebeamerfont{author in head/foot}\insertshortauthor}%
-%       \hfill%
-%       {\usebeamerfont{institute in head/foot}\usebeamercolor[fg]{institute in head/foot}\insertshortinstitute}%
-%     \end{beamercolorbox}%
-%     \begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
-%       leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
-%       {\usebeamerfont{title in head/foot}\insertshorttitle}%
-%       \hfill%
-%       {\usebeamerfont{frame number}\usebeamercolor[fg]{frame number}\insertframenumber~\frameofframes~\inserttotalframenumber}
-%     \end{beamercolorbox}%
-%     \begin{beamercolorbox}[colsep=1.5pt]{lower separation line foot}
-%     \end{beamercolorbox}
-%   }
 \makeatother
 
 % ref：https://tex.stackexchange.com/questions/330817/beamer-template-customization-logo-headline-and-footline?newreg=c99281e2d52846a1abddc869f1cdc120
@@ -393,12 +377,12 @@
 \setbeamerfont{date}{size=\footnotesize}
 \setbeamerfont{frametitle}{size=\large}
 
-
+% 设置标题以及footline颜色
 \setbeamercolor{footline}{bg=ThemeColor}
 \setbeamercolor{frametitle}{bg=ThemeColor,fg=white}
 \setbeamercolor{title}{bg=ThemeColor}
 
-%\setbeamertemplate{navigation symbols}{}
+% 将引用参考文献的图片改为数字
 \setbeamertemplate{bibliography item}[text]
 \setbeamertemplate{caption}[numbered]
 
@@ -410,7 +394,6 @@
 %\setbeamercolor*{sidebar}{use=structure,bg=structure.fg}
 \setbeamercolor{titlelike}{parent=palette primary}
 
-%% try
 \setbeamercolor{block title}{bg=ThemeColor,fg=white}
 \setbeamercolor*{block title example}{use={normal text,example text},bg=white,fg=ThemeColor}
 \setbeamercolor{fine separation line}{}
@@ -418,11 +401,8 @@
 
 \setbeamercolor{separation line}{}
 \setbeamercolor{structure}{fg=ThemeColor}
-\AtBeginSection[]{
-	\begin{frame}
-		\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/shaded/hide]
-	\end{frame}
-}
+
+
 
 \mode
 <all>
