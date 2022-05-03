@@ -13,10 +13,10 @@
 
 ## 预览
 
-![预览图1](https://blog-cdn.arg.pub/beamer-screenshot-1.png)
+![预览图1](preview/beamer-screenshot-1.png)
 
-![预览图2](https://blog-cdn.arg.pub/beamer-screenshot-2.png)
+![预览图2](preview/beamer-screenshot-2.png)
 
-![预览图3](https://blog-cdn.arg.pub/beamer-screenshot-3.png)
+![预览图3](preview/beamer-screenshot-3.png)
 
-![预览图4](https://blog-cdn.arg.pub/beamer-screenshot-4.png)
+![预览图4](preview/beamer-screenshot-4.png)
