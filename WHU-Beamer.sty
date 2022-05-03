@@ -305,7 +305,8 @@
 % 小节前加目录.
 \AtBeginSection[]{
 	\begin{frame}
-		\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/shaded/hide]
+    \tableofcontents[sections=\value{section}]
+		% \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/shaded/hide]
 	\end{frame}
 }
 
@@ -395,20 +396,51 @@
 
 
 
-% 设置一下标题页的字体
+% 设置一下相关字体大小
 \setbeamerfont{author}{size=\large}
 \setbeamerfont{institute}{size=\footnotesize}
 \setbeamerfont{date}{size=\footnotesize}
 \setbeamerfont{frametitle}{size=\large}
+\setbeamerfont{section in toc}{size=\large}
+\setbeamerfont{subsection in toc}{size=\small}
+
 
 % 设置标题以及footline颜色
 \setbeamercolor{footline}{bg=ThemeColor}
 \setbeamercolor{frametitle}{bg=ThemeColor,fg=white}
 \setbeamercolor{title}{bg=ThemeColor}
+\setbeamercolor{subsection in toc}{fg=ThemeColor!50!black}
 
 % 将引用参考文献的图片改为数字
 \setbeamertemplate{bibliography item}[text]
 \setbeamertemplate{caption}[numbered]
+
+% 小节目录样式 %
+
+% \defbeamertemplate{subsection in toc}{bullets}{%
+%   \leavevmode
+%   \leftskip=1.5em
+%   \parbox[t]{1em}{\textbullet\hfill}%
+%   \parbox[t]{\dimexpr\textwidth\relax}{\inserttocsubsection}
+%   \par
+% }
+%\setbeamertemplate{subsection in toc}[bullets]
+
+\setbeamertemplate{subsection in toc}{
+  \leavevmode
+  \leftskip=3.2em
+  \rlap{
+    \hskip-2em
+    \inserttocsectionnumber.
+    \inserttocsubsectionnumber
+  }
+  \inserttocsubsection\par
+}
+%-----------------------
+
+
+
+
 
 % 设置structure的四种调色板颜色
 \setbeamercolor{palette primary}{use=structure,fg=white,bg=structure.fg}
