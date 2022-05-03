@@ -19,4 +19,4 @@
 
 ![预览图3](https://blog-cdn.arg.pub/beamer-screenshot-4.png)
 
-![预览图3](https://blog-cdn.arg.pub/beamer-screenshot-5.png)
+![预览图4](https://blog-cdn.arg.pub/beamer-screenshot-5.png)
