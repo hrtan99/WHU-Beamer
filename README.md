@@ -7,6 +7,8 @@
 - [清华大学Beamer模板](https://github.com/tuna/THU-Beamer-Theme/)
 
 ## 注意事项
+
+使用Windows的朋友们推荐安装TeXLive，使用Macos的朋友们推荐安装MacTeX。编辑器建议使用Vscode并配置LaTeX Workshop插件。
 - 请使用xelatex进行编译，否则可能报错。
 - 依据目前的导航条样式，建议大家PPT分五个Part，每个Part标题四个字概括，如此最为美观。
 

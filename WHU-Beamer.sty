@@ -54,7 +54,7 @@
   \ifoption@tmp%
 }
 
-\xdefinecolor{tsinghua}{rgb}{0.455,0.204,0.506}  %RGB#82318E
+
 
 % 代码块颜色
 \definecolor{deepblue}{rgb}{0,0,0.5}
@@ -62,12 +62,35 @@
 \definecolor{deepgreen}{rgb}{0,0.5,0}
 \definecolor{halfgray}{gray}{0.55}
 
-\definecolor{cyan}{cmyk}{0.5,0,0.15,0}
-
-
 % 注: 常用的颜色模式有 RGB 与 CMYK, 对应 LaTeX 中 rgb(0-1小数制, x/255), RGB(原始数值), cmyk(0-1小数制, x/100).
+% 以下定义一些颜色及其渐变色，包含来自各学校的颜色定义
 % ----------------
-% COLOR:: 锦绣红 - scured    - CMYK(12,92,95,20).
+
+% COLOR:: 武大青色 - whucyan
+\definecolor{whucyan}{cmyk}{0.5,0,0.15,0}
+\colorlet{whucyan10}   {whucyan!10!white}
+\colorlet{whucyan20}   {whucyan!20!white}
+\colorlet{whucyan30}   {whucyan!30!white}
+\colorlet{whucyan40}   {whucyan!40!white}
+\colorlet{whucyan50}   {whucyan!50!white}
+\colorlet{whucyan60}   {whucyan!60!white}
+\colorlet{whucyan70}   {whucyan!70!white}
+\colorlet{whucyan80}   {whucyan!80!white}
+\colorlet{whucyan90}   {whucyan!90!white}
+
+% COLOR:: 清华紫色 - thupurple
+\xdefinecolor{thupurple}{rgb}{0.455,0.204,0.506} 
+\colorlet{thupurple10}   {thupurple!10!white}
+\colorlet{thupurple20}   {thupurple!20!white}
+\colorlet{thupurple30}   {thupurple!30!white}
+\colorlet{thupurple40}   {thupurple!40!white}
+\colorlet{thupurple50}   {thupurple!50!white}
+\colorlet{thupurple60}   {thupurple!60!white}
+\colorlet{thupurple70}   {thupurple!70!white}
+\colorlet{thupurple80}   {thupurple!80!white}
+\colorlet{thupurple90}   {thupurple!90!white}
+
+% COLOR:: 川大锦绣红 - scured    - CMYK(12,92,95,20).
 \definecolor{scured}   {cmyk}{0.12,0.92,0.95,0.20}
 \colorlet{scured10}   {scured!10!white}
 \colorlet{scured20}   {scured!20!white}
@@ -79,7 +102,7 @@
 \colorlet{scured80}   {scured!80!white}
 \colorlet{scured90}   {scured!90!white}
 
-% COLOR:: 优雅灰 - scugrey   - CMYK(47,37,37,20).
+% COLOR:: 川大优雅灰 - scugrey   - CMYK(47,37,37,20).
 \definecolor{scugrey}  {cmyk}{0.47,0.37,0.37,0.00}
 \colorlet{scugrey10}  {scugrey!10!white}
 \colorlet{scugrey20}  {scugrey!20!white}
@@ -91,7 +114,7 @@
 \colorlet{scugrey80}  {scugrey!80!white}
 \colorlet{scugrey90}  {scugrey!90!white}
 
-% COLOR:: 宝石蓝 - scublue   - CMYK(100,60,0,15).
+% COLOR:: 川大宝石蓝 - scublue   - CMYK(100,60,0,15).
 \definecolor{scublue}  {cmyk}{1.00,0.60,0.00,0.15}
 \colorlet{scublue10}  {scublue!10!white}
 \colorlet{scublue20}  {scublue!20!white}
@@ -103,7 +126,7 @@
 \colorlet{scublue80}  {scublue!80!white}
 \colorlet{scublue90}  {scublue!90!white}
 
-% COLOR:: 荷叶绿 - scugreen  - CMYK(100,0,90,15).
+% COLOR:: 川大荷叶绿 - scugreen  - CMYK(100,0,90,15).
 \definecolor{scugreen} {cmyk}{1.00,0.00,0.90,0.15}
 \colorlet{scugreen10} {scugreen!10!white}
 \colorlet{scugreen20} {scugreen!20!white}
@@ -115,7 +138,7 @@
 \colorlet{scugreen80} {scugreen!80!white}
 \colorlet{scugreen90} {scugreen!90!white}
 
-% COLOR:: 银杏黄 - scuyellow - CMYK(0,40,100,15).
+% COLOR:: 川大银杏黄 - scuyellow - CMYK(0,40,100,15).
 \definecolor{scuyellow}{cmyk}{0.00,0.40,1.00,0.15}
 \colorlet{scuyellow10}{scuyellow!10!white}
 \colorlet{scuyellow20}{scuyellow!20!white}
@@ -128,7 +151,8 @@
 \colorlet{scuyellow90}{scuyellow!90!white}
 % ----------------
 
-\colorlet{ThemeColor}{cyan}
+% 在此处设置主题颜色
+\colorlet{ThemeColor}{whucyan} 
 
 % 设置页面间距
 \setbeamersize {
