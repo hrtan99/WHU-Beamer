@@ -155,10 +155,10 @@
 \colorlet{ThemeColor}{whucyan} 
 
 % 设置页面间距
-\setbeamersize {
-  text margin left=1.5cm,
-  text margin right=1.5cm
-}
+% \setbeamersize {
+%   text margin left=1.5cm,
+%   text margin right=1.5cm
+% }
 
 
 \newif\ifbeamer@whu@contentmuticols
@@ -204,15 +204,15 @@
 
 % 设置 "background.png" 为图片 "bg".
 \pgfdeclareimage[width=\paperwidth]%
-  {bg}{./images/background_white.png}
+  {bg}{./images/background.png}
 % 设置图片 "bg" 为背景图片.
 \usebackgroundtemplate{\pgfuseimage{bg}}
-% 设置 "backgroundofsubsectiontocpage.png" 为图片 "bgofsubsectoc".
-% \pgfdeclareimage[width=\paperwidth]%
-%   {bgofsubsectoc}{./images/backgroundofsubsectiontocpage.png}
-% 设置 "backgroundoftitlepage.png" 为图片 "bgoftitle".
-% \pgfdeclareimage[width=\paperwidth]%
-%   {bgoftitle}{./images/backgroundoftitlepage.png}
+% 设置 "background_cover.png" 为图片 "bgofsubsectoc".
+\pgfdeclareimage[width=\paperwidth]%
+  {bgofsubsectoc}{./images/background_cover.png}
+% 设置 "background_cover.png" 为图片 "bgoftitle".
+\pgfdeclareimage[width=\paperwidth]%
+  {bgoftitle}{./images/background_cover.png}
 
 % 设置 "backgroundoftitlepage(Light).png" 为图片 "bgoftitle".
 % \pgfdeclareimage[width=\paperwidth]%
@@ -301,13 +301,36 @@
   \fi
 }
 
+% 添加封面及目录
+\AtBeginDocument{%
+  \begingroup%
+    \setbeamertemplate{background}{\pgfuseimage{bgoftitle}}%
+    \kaishu
+    \begin{frame}
+      \titlepage
+    \end{frame}
+    \begin{frame}{目录}
+      % \hfill
+      % \parbox[t]{8cm}{
+      %     \begin{minipage}[c][0.75\textheight]{\textwidth}
+              
+      %     \end{minipage}
+      % }
+      \transfade % 淡入淡出
+      \tableofcontents[]
+    \end{frame}
+  \endgroup%
+}
 
 % 小节前加目录.
 \AtBeginSection[]{
-	\begin{frame}
-    \tableofcontents[sections=\value{section}]
-		% \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/shaded/hide]
-	\end{frame}
+  \begingroup%
+    \setbeamertemplate{background}{\pgfuseimage{bgofsubsectoc}}%
+    \begin{frame}
+      \tableofcontents[sections=\value{section}]
+      % \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/shaded/hide]
+    \end{frame}
+  \endgroup%
 }
 
 % \AtBeginSubsection[]{%
@@ -396,7 +419,7 @@
 
 
 
-% 设置一下相关字体大小
+% 设置一下相关字体
 \setbeamerfont{author}{size=\large}
 \setbeamerfont{institute}{size=\footnotesize}
 \setbeamerfont{date}{size=\footnotesize}
