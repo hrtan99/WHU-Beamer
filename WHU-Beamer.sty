@@ -313,10 +313,23 @@
 %   }
 \makeatother
 
-%\logo{\includegraphics[height=1cm]{images/whulogo_black.png}}
+% ref：https://tex.stackexchange.com/questions/330817/beamer-template-customization-logo-headline-and-footline?newreg=c99281e2d52846a1abddc869f1cdc120
+
+% footline
+\makeatletter
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortdate \hfill \insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle \hfill \insertframenumber\,/\,\inserttotalframenumber
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
 
 % Headline
-% ref：https://tex.stackexchange.com/questions/330817/beamer-template-customization-logo-headline-and-footline?newreg=c99281e2d52846a1abddc869f1cdc120
 \makeatletter
 \setbeamertemplate{headline}{%
   \leavevmode%
