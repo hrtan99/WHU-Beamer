@@ -9,3 +9,14 @@
 ## 注意事项
 - 请使用xelatex进行编译，否则可能报错。
 - 依据目前的导航条样式，建议大家PPT分五个Part，每个Part标题四个字概括，如此最为美观。
+
+
+## 预览
+
+![预览图1](https://blog-cdn.arg.pub/beamer-screenshot-2.png)
+
+![预览图2](https://blog-cdn.arg.pub/beamer-screenshot-3.png)
+
+![预览图3](https://blog-cdn.arg.pub/beamer-screenshot-4.png)
+
+![预览图3](https://blog-cdn.arg.pub/beamer-screenshot-5.png)
