@@ -57,6 +57,9 @@
   \ifoption@tmp%
 }
 
+% 改变引用字体大小
+\renewcommand*{\bibfont}{\scriptsize}
+
 % 重写上标引用命令。请勿随意改动括号缩进。
 \DeclareCiteCommand{\supercite}[\mkbibsuperscript]
   {\bibopenbracket
@@ -167,6 +170,16 @@
 
 % 在此处设置主题颜色
 \colorlet{ThemeColor}{whucyan} 
+\colorlet{ThemeColor10}{ThemeColor!10!black}
+\colorlet{ThemeColor20}{ThemeColor!20!black}
+\colorlet{ThemeColor30}{ThemeColor!30!black}
+\colorlet{ThemeColor40}{ThemeColor!40!black}
+\colorlet{ThemeColor50}{ThemeColor!50!black}
+\colorlet{ThemeColor60}{ThemeColor!60!black}
+\colorlet{ThemeColor70}{ThemeColor!70!black}
+\colorlet{ThemeColor80}{ThemeColor!80!black}
+\colorlet{ThemeColor90}{ThemeColor!90!black}
+
 
 % 设置页面间距
 % \setbeamersize {
@@ -459,12 +472,25 @@
 \setbeamerfont{subsection in toc}{size=\small}
 
 
-% 设置标题以及footline颜色
+% hyperref设置文中引用的颜色
+\hypersetup{
+    colorlinks,
+    citecolor=ThemeColor50,
+    allcolors=ThemeColor80
+}
+
+% 设置各种元素的颜色
 \setbeamercolor{footline}{bg=ThemeColor}
 \setbeamercolor{frametitle}{bg=ThemeColor,fg=white}
 \setbeamercolor{title}{bg=ThemeColor}
-\setbeamercolor{subsection in toc}{fg=ThemeColor!50!black}
-\setbeamercolor{navigation symbols}{bg=ThemeColor!50!black,fg=ThemeColor!50!black}
+\setbeamercolor{subsection in toc}{fg=ThemeColor50}
+\setbeamercolor{navigation symbols}{bg=ThemeColor50,fg=ThemeColor50}
+\setbeamercolor{bibliography item}{fg=ThemeColor50}
+\setbeamercolor{bibliography entry author}{fg=scugrey}
+\setbeamercolor{bibliography entry title}{fg=ThemeColor80} 
+\setbeamercolor{bibliography entry location}{fg=scugrey} 
+\setbeamercolor{bibliography entry note}{fg=scugrey}  
+
 
 
 % 将引用参考文献的图片改为数字
