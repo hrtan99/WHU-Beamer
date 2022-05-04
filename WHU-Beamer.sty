@@ -22,12 +22,15 @@
 \RequirePackage{stackengine}
 \RequirePackage{tikz} % tikz: 绘制图像.
 \RequirePackage{tcolorbox} % tcolorbox: 绘制彩色文本框.
+\RequirePackage{caption} % 图片插入标题
+\RequirePackage{subcaption} % 子图片插入标题
 \RequirePackage[backend=biber,style=numeric-comp,sorting=none]{biblatex} % 参考文献
 
 % 添加引用路径
 \addbibresource{./ref/ref.bib}
 
-
+% 设置图片的标题字体
+\captionsetup{font=scriptsize,labelfont=scriptsize}
 
 % tcolorbox使用对应的库
 \tcbuselibrary{theorems, skins, breakable, xparse, listings}
