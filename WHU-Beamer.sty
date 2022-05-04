@@ -57,29 +57,18 @@
   \ifoption@tmp%
 }
 
-% 重写上标引用命令 
+% 重写上标引用命令。请勿随意改动括号缩进。
 \DeclareCiteCommand{\supercite}[\mkbibsuperscript]
-  {
-    \bibopenbracket
+  {\bibopenbracket
     \usebibmacro{cite:init}%
     \let\multicitedelim=\supercitedelim
-    \iffieldundef{prenote}
-      {}
+    \iffieldundef{prenote}{}
       {\BibliographyWarning{Ignoring prenote argument}}%
-    \iffieldundef{postnote}
-      {}
-      {\BibliographyWarning{Ignoring postnote argument}}
-  }
-  {
-    \usebibmacro{citeindex}%
-    \usebibmacro{cite:comp}
-  }
+    \iffieldundef{postnote}{}
+      {\BibliographyWarning{Ignoring postnote argument}}}
+  {\usebibmacro{citeindex}\usebibmacro{cite:comp}}
   {}
-  {
-    \usebibmacro{cite:dump}%
-    \bibclosebracket
-  }
-
+  {\usebibmacro{cite:dump}\bibclosebracket}
 
 % 代码块颜色
 \definecolor{deepblue}{rgb}{0,0,0.5}
