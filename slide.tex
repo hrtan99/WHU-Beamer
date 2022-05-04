@@ -1,4 +1,4 @@
-\documentclass[aspectratio=169]{beamer}
+\documentclass[aspectratio=1610]{beamer}
 
 \author{阿日哥}
 \title{大规模公交轨迹数据预测}
@@ -8,12 +8,14 @@
 
 \usepackage{caption}
 \usepackage{subcaption}
-\usepackage[ContentMuticols=true]{WHU-Beamer}
+\usepackage [
+    ContentMuticols=false, % 目录是否分栏
+    AspectRatio=1610 % 页面比例
+] {WHU-Beamer}
 
 % defs
 \def\cmd#1{\texttt{\color{red}\footnotesize $\backslash$#1}}
 \def\env#1{\texttt{\color{blue}\footnotesize #1}}
-
 
 \begin{document}
 \kaishu
@@ -24,5 +26,4 @@
 \include{pages/chapter4}
 \include{pages/reference}
 \include{pages/thanks}
-
 \end{document}

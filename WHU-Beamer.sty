@@ -26,7 +26,7 @@
 
 % 添加引用路径
 \addbibresource{./ref/ref.bib}
-\setbeamerfont{footnote}{size=\tiny}
+
 
 
 % tcolorbox使用对应的库
@@ -46,7 +46,7 @@
 % #2: Option - Value.
   \newif\ifoption@tmp%
   \edef\optionkey@tmp{%
-    \csname beamer@scu@#1\endcsname%
+    \csname beamer@whu@#1\endcsname%
   }%
   \edef\optionvalue@tmp{#2}%
   \ifx\optionkey@tmp\optionvalue@tmp\option@tmptrue%
@@ -160,7 +160,7 @@
 %   text margin right=1.5cm
 % }
 
-
+% 用于判断是否目录分栏
 \newif\ifbeamer@whu@contentmuticols
 
 % KEY:: BlockDisplay.
@@ -169,14 +169,20 @@
 % KEY:: LanguageMode.
 % VALUE:: cn | en.
 \DeclareOptionBeamer{LanguageMode}{\def\beamer@whu@LanguageMode{#1}}
-% KEY:: ColorDisplay [PASSTO:: beamercolorthemescu.sty].
+% KEY:: ColorDisplay.
 % VALUE:: JXred | BSblue.
 \DeclareOptionBeamer{ColorDisplay}{\def\beamer@whu@ColorDisplay{#1}}
+% KEY:: AspectRatio [PASSTO:: beamercolorthemescu.sty].
+% VALUE:: 1610 | 169.
+% 注：1610表示16:10的比例；169表示16:9的比例。
+\DeclareOptionBeamer{AspectRatio}{\def\beamer@whu@AspectRatio{#1}}
+
 
 % 展开后面的内容
 \DeclareOptionBeamer{ContentMuticols}{\csname beamer@whu@contentmuticols#1\endcsname}
 
 \ExecuteOptionsBeamer{%
+  AspectRatio=1610,
   BlockDisplay=colorful,%
   ContentMuticols=true,%
   ColorDisplay=JXred,%
@@ -202,21 +208,28 @@
 % 设置了页眉 logo.
 % ----------------
 
+\if\EqualOptionsBeamer{AspectRatio}{1610}%
+  \def\beamer@whu@bg{./images/background_1610.png}
+  \def\beamer@whu@bg@cover{./images/background_cover_1610.png}
+  %\PackageWarningNoLine{beamerthemescu}{ratio set to 1610}
+  \typeout{ratio set to 16:10.}
+\else\if\EqualOptionsBeamer{AspectRatio}{169}%
+  \def\beamer@whu@bg{./images/background_169.png}
+  \def\beamer@whu@bg@cover{./images/background_cover_169.png}
+  \typeout{ratio set to 16:9.}
+\fi\fi
+
 % 设置 "background.png" 为图片 "bg".
 \pgfdeclareimage[width=\paperwidth]%
-  {bg}{./images/background.png}
+  {bg}{\beamer@whu@bg}
 % 设置图片 "bg" 为背景图片.
 \usebackgroundtemplate{\pgfuseimage{bg}}
 % 设置 "background_cover.png" 为图片 "bgofsubsectoc".
 \pgfdeclareimage[width=\paperwidth]%
-  {bgofsubsectoc}{./images/background_cover.png}
+  {bgofsubsectoc}{\beamer@whu@bg@cover}
 % 设置 "background_cover.png" 为图片 "bgoftitle".
 \pgfdeclareimage[width=\paperwidth]%
-  {bgoftitle}{./images/background_cover.png}
-
-% 设置 "backgroundoftitlepage(Light).png" 为图片 "bgoftitle".
-% \pgfdeclareimage[width=\paperwidth]%
-%   {bgoftitle}{./images/backgroundoftitlepage(Light).png}
+  {bgoftitle}{\beamer@whu@bg@cover}
 
 
 % 设置 "whulogo.png" 为图片 "logo".
@@ -288,16 +301,10 @@
 \def\inserttableofcontent{
   \ifbeamer@whu@contentmuticols%
     \begin{multicols}{2}
-      \tableofcontents[%
-        sectionstyle=show/shaded,%
-        subsectionstyle=show/shaded/hide,%
-        subsubsectionstyle=show/shaded/hide]%
+      \tableofcontents[]%
     \end{multicols}
   \else
-    \tableofcontents[%
-      sectionstyle=show/shaded,
-      subsectionstyle=show/shaded/hide,
-      subsubsectionstyle=show/shaded/hide]
+    \tableofcontents[]
   \fi
 }
 
@@ -317,7 +324,7 @@
       %     \end{minipage}
       % }
       \transfade % 淡入淡出
-      \tableofcontents[]
+      \inserttableofcontent
     \end{frame}
   \endgroup%
 }
@@ -328,7 +335,6 @@
     \setbeamertemplate{background}{\pgfuseimage{bgofsubsectoc}}%
     \begin{frame}
       \tableofcontents[sections=\value{section}]
-      % \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/shaded/hide]
     \end{frame}
   \endgroup%
 }
@@ -371,7 +377,7 @@
 \makeatletter
 \setbeamertemplate{headline}{%
   \leavevmode%
-  \@tempdimb=1ex%
+  \@tempdimb=1.5ex%
   \ifnum\beamer@subsectionmax<\beamer@sectionmax%
     \multiply\@tempdimb by\beamer@sectionmax%
   \else%
@@ -420,10 +426,11 @@
 
 
 % 设置一下相关字体
+\setbeamerfont{footnote}{size=\tiny}
 \setbeamerfont{author}{size=\large}
 \setbeamerfont{institute}{size=\footnotesize}
 \setbeamerfont{date}{size=\footnotesize}
-\setbeamerfont{frametitle}{size=\large}
+\setbeamerfont{frametitle}{size=\normalsize}
 \setbeamerfont{section in toc}{size=\large}
 \setbeamerfont{subsection in toc}{size=\small}
 
