@@ -23,8 +23,6 @@
 \RequirePackage{tikz} % tikz: 绘制图像.
 \RequirePackage{tcolorbox} % tcolorbox: 绘制彩色文本框.
 \RequirePackage[backend=biber,style=numeric-comp,sorting=none]{biblatex} % 参考文献
-\RequirePackage{varioref}% varioref: 交叉引用.
-\RequirePackage{cleveref}% cleveref: 交叉引用.
 
 % 添加引用路径
 \addbibresource{./ref/ref.bib}
@@ -437,12 +435,12 @@
 
 
 
-% 设置一下相关字体
+% 设置一下相关字体大小
 \setbeamerfont{footnote}{size=\tiny}
 \setbeamerfont{author}{size=\large}
 \setbeamerfont{institute}{size=\footnotesize}
 \setbeamerfont{date}{size=\footnotesize}
-\setbeamerfont{frametitle}{size=\normalsize}
+\setbeamerfont{frametitle}{size=\small}
 \setbeamerfont{section in toc}{size=\large}
 \setbeamerfont{subsection in toc}{size=\small}
 
@@ -452,12 +450,13 @@
 \setbeamercolor{frametitle}{bg=ThemeColor,fg=white}
 \setbeamercolor{title}{bg=ThemeColor}
 \setbeamercolor{subsection in toc}{fg=ThemeColor!50!black}
+\setbeamercolor{navigation symbols}{bg=ThemeColor!50!black,fg=ThemeColor!50!black}
+
 
 % 将引用参考文献的图片改为数字
 \setbeamertemplate{bibliography item}[text]
 \setbeamertemplate{caption}[numbered]
 
-\setbeamercolor{navigation symbols}{bg=ThemeColor!50!black,fg=ThemeColor!50!black}
 % 小节目录样式 %
 
 % \defbeamertemplate{subsection in toc}{bullets}{%
