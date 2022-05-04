@@ -377,7 +377,7 @@
 \makeatletter
 \setbeamertemplate{headline}{%
   \leavevmode%
-  \@tempdimb=1.5ex%
+  \@tempdimb=1.25ex%
   \ifnum\beamer@subsectionmax<\beamer@sectionmax%
     \multiply\@tempdimb by\beamer@sectionmax%
   \else%
@@ -389,11 +389,22 @@
       \vspace*{1mm}\hspace*{-2mm}%
       \insertsectionnavigationhorizontal{.5\paperwidth}{}{\hskip0pt plus1filll}
     \end{beamercolorbox}%
-    \begin{beamercolorbox}[wd=.3\paperwidth,ht=\@tempdimb]{subsection in head/foot}%
-      \vbox to\@tempdimb{\vfil\insertsubsectionnavigation{.5\paperwidth}\vfil}%
+    \begin{beamercolorbox}[wd=.4\paperwidth,ht=\@tempdimb]{subsection in head/foot}%
+      % \vbox to\@tempdimb{
+      %   \vfil
+      %   \insertsubsectionnavigation
+      %   {.5\paperwidth}
+      %   \vfil
+      % }%
+      \vbox to\@tempdimb{
+        \vfill
+        \insertsubsectionnavigationhorizontal{.4\paperwidth}{}{\hskip0pt plus1filll}
+        \vfill
+      }%
     \end{beamercolorbox}%
-    \begin{beamercolorbox}[wd=.2\paperwidth,ht=\@tempdimb]{subsection in head/foot}%
-      \vbox to\@tempdimb{\vfil\hfill\includegraphics[height=\@tempdimb]{images/whulogo.png} \vfil}
+    \begin{beamercolorbox}[wd=.1\paperwidth,ht=\@tempdimb]{subsection in head/foot}%
+      \hspace*{-5ex}
+      \includegraphics[height=\@tempdimb]{images/whulogo.png}
     \end{beamercolorbox}%    
   \fi%
 }
