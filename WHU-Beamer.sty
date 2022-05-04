@@ -57,6 +57,28 @@
   \ifoption@tmp%
 }
 
+% 重写上标引用命令 
+\DeclareCiteCommand{\supercite}[\mkbibsuperscript]
+  {
+    \bibopenbracket
+    \usebibmacro{cite:init}%
+    \let\multicitedelim=\supercitedelim
+    \iffieldundef{prenote}
+      {}
+      {\BibliographyWarning{Ignoring prenote argument}}%
+    \iffieldundef{postnote}
+      {}
+      {\BibliographyWarning{Ignoring postnote argument}}
+  }
+  {
+    \usebibmacro{citeindex}%
+    \usebibmacro{cite:comp}
+  }
+  {}
+  {
+    \usebibmacro{cite:dump}%
+    \bibclosebracket
+  }
 
 
 % 代码块颜色
