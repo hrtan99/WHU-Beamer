@@ -373,17 +373,6 @@
 
 % ref：https://tex.stackexchange.com/questions/330817/beamer-template-customization-logo-headline-and-footline?newreg=c99281e2d52846a1abddc869f1cdc120
 
-
-\def\beamer@linkspace#1{\vbox to7.5pt{}\kern#1}
-
-%  使用 x / total 格式页码.
-\def\insertfootlineframe{%
-  \insertframenumber%
-  \Acrobatmenu{GoToPage}{\beamer@linkspace{.275em}}%
-  \,/\,\Acrobatmenu{GoToPage}{\beamer@linkspace{.275em}}%
-  \inserttotalframenumber%
-}
-
 % footline
 \makeatletter
 \setbeamertemplate{footline}{%
@@ -392,8 +381,7 @@
     \usebeamerfont{author in head/foot}\insertshortdate \hfill \insertshortauthor
   \end{beamercolorbox}%
   \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
-    % \usebeamerfont{title in head/foot}\insertshorttitle \hfill \insertframenumber \,/\, \inserttotalframenumber%
-    \usebeamerfont{title in head/foot}\insertshorttitle \hfill \insertfootlineframe
+    \usebeamerfont{title in head/foot}\insertshorttitle \hfill \insertframenumber \,/\, \inserttotalframenumber%
   \end{beamercolorbox}}%
   \vskip0pt%
 }
@@ -471,18 +459,10 @@
 \setbeamerfont{section in toc}{size=\large}
 \setbeamerfont{subsection in toc}{size=\small}
 
-
-% hyperref设置文中引用的颜色
-\hypersetup{
-    colorlinks,
-    citecolor=ThemeColor50,
-    allcolors=ThemeColor80
-}
-
 % 设置各种元素的颜色
 \setbeamercolor{footline}{bg=ThemeColor}
 \setbeamercolor{frametitle}{bg=ThemeColor,fg=white}
-\setbeamercolor{title}{bg=ThemeColor}
+\setbeamercolor{title}{bg=ThemeColor, fg=white}
 \setbeamercolor{subsection in toc}{fg=ThemeColor50}
 \setbeamercolor{navigation symbols}{bg=ThemeColor50,fg=ThemeColor50}
 \setbeamercolor{bibliography item}{fg=ThemeColor50}

@@ -44,11 +44,15 @@
 
 目前的版本中，如需要修改颜色，请直接修改样式文件中的下示代码，第二个参数用于指定颜色。未来的版本中会加入更多颜色，并将模板颜色作为参数传入。
 
-
 ```latex
 % 在此处设置主题颜色
 \colorlet{ThemeColor}{whucyan} 
 ```
+
+### 关于引用
+
+请使用`\supercite`命令以启用上标引用。
+
 
 ## 注意事项
 
@@ -59,10 +63,18 @@
 
 ## 预览
 
-![预览图1](preview/beamer-screenshot-1.png)
+![封面](preview/cover.png)
 
-![预览图2](preview/beamer-screenshot-2.png)
+![目录](preview/content.png)
 
-![预览图3](preview/beamer-screenshot-3.png)
+![小节](preview/section.png)
 
-![预览图4](preview/beamer-screenshot-4.png)
+![代码环境](preview/code.png)
+
+![公式环境](preview/equation.png)
+
+![定理环境](preview/theorem.png)
+
+![图片环境](preview/figure.png)
+
+![参考文献](preview/reference.png)
