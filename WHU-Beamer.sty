@@ -384,7 +384,10 @@
     \usebeamerfont{author in head/foot}\insertshortdate \hfill \insertshortauthor
   \end{beamercolorbox}%
   \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
-    \usebeamerfont{title in head/foot}\insertshorttitle \hfill \insertframenumber \,/\, \inserttotalframenumber%
+    % \usebeamerfont{title in head/foot}\insertshorttitle \hfill \insertframenumber \,/\, \inserttotalframenumber%
+    \usebeamerfont{title in head/foot}
+    \insertshorttitle\hfill
+    \vbox{\hbox{\insertslidenavigationsymbol\insertframenavigationsymbol\insertsectionnavigationsymbol\insertsubsectionnavigationsymbol\insertbackfindforwardnavigationsymbol}\vskip-.6ex}
   \end{beamercolorbox}}%
   \vskip0pt%
 }
@@ -467,7 +470,8 @@
 \setbeamercolor{frametitle}{bg=ThemeColor,fg=white}
 \setbeamercolor{title}{bg=ThemeColor, fg=white}
 \setbeamercolor{subsection in toc}{fg=ThemeColor50}
-\setbeamercolor{navigation symbols}{bg=ThemeColor50,fg=ThemeColor50}
+\setbeamercolor{navigation symbols dimmed}{fg=white} % 修改导航按钮箭头颜色
+\setbeamercolor{navigation symbols}{bg=white,fg=white}
 \setbeamercolor{bibliography item}{fg=ThemeColor50}
 \setbeamercolor{bibliography entry author}{fg=scugrey}
 \setbeamercolor{bibliography entry title}{fg=ThemeColor80} 
@@ -585,6 +589,7 @@
 \def\verticalpbartype{1} % 垂直方向 画粉色樱花
 \def\horizontalpbartype{2} % 水平方向 画白色樱花
 \setbeamersize{sidebar width right=1cm}
+\makeatletter
 \setbeamertemplate{sidebar right}
 {
     \begin{tikzpicture}
@@ -592,9 +597,10 @@
         \path (-0.5cm, 0) -- ++ (0.5cm, 0); % make room for progressbar
         \drawprogressbarv{ThemeColor}{\paperheight}{\insertdocumentendpage}{\insertsectionstartpage}{\insertsectionendpage}{\insertpagenumber}{\verticalpbartype}
         \node[rounded corners, draw=ThemeColor, text width=4.5em, align=center, inner sep=2pt, text=ThemeColor50, anchor=east, opacity=.85] at (0.405, -0.85\paperheight-4.5) %rounded rectangle west arc=none
-        {progress};
+        {\insertframenumber \,/\, \inserttotalframenumber};
     \end{tikzpicture}
 }
+\makeatother
 %-----------------------
 
 
