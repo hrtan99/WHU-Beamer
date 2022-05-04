@@ -26,6 +26,8 @@
 \RequirePackage{subcaption} % 子图片插入标题
 \RequirePackage[backend=biber,style=numeric-comp,sorting=none]{biblatex} % 参考文献
 
+\RequirePackage{cncolours} % 绘制樱花的color包
+
 % 添加引用路径
 \addbibresource{./ref/ref.bib}
 
@@ -36,8 +38,9 @@
 \tcbuselibrary{theorems, skins, breakable, xparse, listings}
 \tcbset{listing engine=listings}
 
-% tikz引入shapes
-\usetikzlibrary{shapes}
+% tikz引入shapes calc
+\usetikzlibrary{shapes, calc}
+
 
 
 % 定义执行命令. 修改自 sjtubeamer.
@@ -501,7 +504,98 @@
 %-----------------------
 
 
+% 樱花进度条
+% Thanks to @T0nyX1ang
+% ref：https://github.com/T0nyX1ang/WHU-BeamerTemplate/tree/v1.4.0
 
+\providecommand{\drawpetalgeneral}[8]{
+    % draw a general petal (not needed be called explicitly in most situations)
+    % required parameter(s): #1 -- rotation of the petal
+    %                        #2 -- outer color of the petal
+    %                        #3 -- inner color of the petal
+    %                        #4 -- kernel color of the petal    
+    %                        #5 -- outwards angle of the petal
+    %                        #6 -- inwards angle of the petal
+    %                        #7 -- offset in x axis
+    %                        #8 -- offset in y axis
+
+    \filldraw[rotate=#1,color=#2] (0,0) [out=#5,in=#6]to (#7,#8) -- (0,#8-#7) -- (-#7,#8) [out=-180-#6,in=180-#5]to (0, 0) -- cycle;
+    \fill[rotate=#1-6,#3,opacity=.65] (0,#8*0.25) circle (1.2pt);
+    \fill[rotate=#1+6,#3,opacity=.65] (0,#8*0.25) circle (1.2pt);
+    \fill[#4,opacity=.75] (0,0) circle (2.2pt);
+}
+
+\providecommand{\drawpetal}[2]{
+    % draw a certain petal
+    % required parameter(s): #1 -- rotation of the petal
+    %                        #2 -- petal type
+
+    \ifcase#2\relax
+    \or\drawpetalgeneral{#1}{嫣红}{樱桃色}{樱草色}{53}{-25}{0.25}{3.75} % Type 1 -- pink petal of sakura
+    \or\drawpetalgeneral{#1}{精白}{粉红}{樱草色}{53}{-25}{0.25}{3.75} % Type 2 -- white petal of sakura
+    \fi    
+}
+
+\providecommand{\drawflower}[2]{
+    % draw a flower
+    % required parameter(s): #1 -- the number of petals
+    %                        #2 -- petal type
+    % e.g. for a pink sakura, call \drawflower{5}{1}
+
+    \foreach \x in {1,...,#1}            
+    {
+        \drawpetal{-(\x - 1) / #1 * 360}{#2}
+    }
+}
+
+\providecommand{\drawprogressbarh}[7]{
+    % draw a horizontal progressbar
+    % required parameter(s): #1 the color of progressbar
+    %                        #2 length of paper height (factor = 0.85/0.75)
+    %                        #3 total pages
+    %                        #4 start page of current section
+    %                        #5 end page of current section
+    %                        #6 current page
+    %                        #7 sakura type
+
+    \draw[line width=0.2pt, color=#1] (0, 0) -- (.85#2, 0);
+    \draw[line width=0.8pt, color=#1] (0.05 * #2 + 0.75 / #3 * #2 * #4 - 0.375 / #3 * #2, 0) -- (0.05 * #2 + 0.75 / #3 * #2 * #5 - 0.375 / #3 * #2, 0); % extinguish current section by line width
+    \begin{scope}[xshift=0.05 * #2 + 0.75 / #3 * #2 * #6 - 0.375 / #3 * #2, scale=.05]
+        \drawflower{5}{#7}
+    \end{scope}
+}
+
+\providecommand{\drawprogressbarv}[7]{
+    % draw a vertical progressbar
+    % required parameter(s): #1 the color of progressbar
+    %                        #2 length of paper height (factor = 0.85/0.75)
+    %                        #3 total pages
+    %                        #4 start page of current section
+    %                        #5 end page of current section
+    %                        #6 current page
+    %                        #7 sakura type
+
+    \draw[line width=0.2pt, color=#1] (0, 0) -- (0, -0.85#2);
+    \draw[line width=0.8pt, color=#1] (0, -0.05 * #2 - 0.75 / #3 * #2 * #4 + 0.375 / #3 * #2) -- (0, -0.05 * #2 - 0.75 / #3 * #2 * #5 + 0.375 / #3 * #2);
+    \begin{scope}[yshift=-0.05 * #2 - 0.75 / #3 * #2 * #6 + 0.375 / #3 * #2, scale=.05]
+        \drawflower{5}{#7}
+    \end{scope}
+}
+
+\def\verticalpbartype{1} % 垂直方向 画粉色樱花
+\def\horizontalpbartype{2} % 水平方向 画白色樱花
+\setbeamersize{sidebar width right=1cm}
+\setbeamertemplate{sidebar right}
+{
+    \begin{tikzpicture}
+        % construct several paths to make room for the sakura
+        \path (-0.5cm, 0) -- ++ (0.5cm, 0); % make room for progressbar
+        \drawprogressbarv{ThemeColor}{\paperheight}{\insertdocumentendpage}{\insertsectionstartpage}{\insertsectionendpage}{\insertpagenumber}{\verticalpbartype}
+        \node[rounded corners, draw=ThemeColor, text width=4.5em, align=center, inner sep=2pt, text=ThemeColor50, anchor=east, opacity=.85] at (0.405, -0.85\paperheight-4.5) %rounded rectangle west arc=none
+        {progress};
+    \end{tikzpicture}
+}
+%-----------------------
 
 
 % 设置structure的四种调色板颜色
