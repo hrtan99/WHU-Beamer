@@ -387,7 +387,7 @@
     % \usebeamerfont{title in head/foot}\insertshorttitle \hfill \insertframenumber \,/\, \inserttotalframenumber%
     \usebeamerfont{title in head/foot}
     \insertshorttitle\hfill
-    \vbox{\hbox{\insertslidenavigationsymbol\insertframenavigationsymbol\insertsectionnavigationsymbol\insertsubsectionnavigationsymbol\insertbackfindforwardnavigationsymbol}\vskip-.6ex}
+    \vbox{\hbox{\insertslidenavigationsymbol\insertframenavigationsymbol\insertsectionnavigationsymbol\insertsubsectionnavigationsymbol\insertbackfindforwardnavigationsymbol\hskip-2ex}\vskip-.6ex}
   \end{beamercolorbox}}%
   \vskip0pt%
 }
@@ -494,6 +494,16 @@
 %   \par
 % }
 %\setbeamertemplate{subsection in toc}[bullets]
+
+
+% 修改frame title的样式
+\setbeamertemplate{frametitle}{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=.5ex]{}%{frametitle}
+    \textcolor{ThemeColor50}{\rule[-.3ex]{.35em}{2.25ex}\enspace}%
+    \usebeamerfont{frametitle}\usebeamercolor[bg]{frametitle}%
+    \insertframetitle%
+  \end{beamercolorbox}%
+}
 
 \setbeamertemplate{subsection in toc}{
   \leavevmode
