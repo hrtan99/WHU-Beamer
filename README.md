@@ -64,18 +64,20 @@
 
 ## 预览
 
-![封面](preview/cover-pre.jpeg)
+![封面](preview/cover-preview.jpeg)
 
-![目录](preview/content-pre.jpeg)
+![目录](preview/contents-preview.jpeg)
 
-![小节](preview/section-pre.jpeg)
+![小节](preview/section-preview.jpeg)
 
-![代码环境](preview/code-pre.jpeg)
+![代码环境](preview/codes-preview.jpeg)
 
-![公式环境](preview/equation-pre.jpeg)
+![公式环境](preview/equations-preview.jpeg)
 
-![定理环境](preview/theorem-pre.jpeg)
+![定理环境](preview/theorems-preview.jpeg)
 
-![图片环境](preview/figure-pre.jpeg)
+![图片环境](preview/figures-preview.jpeg)
 
-![参考文献](preview/reference-pre.jpeg)
+![参考文献](preview/reference-preview.jpeg)
+
+![致谢](preview/thanks-preview.jpeg)
