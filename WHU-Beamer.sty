@@ -223,7 +223,9 @@
   BlockDisplay=colorful,%
   ContentMuticols=true,%
   ColorDisplay=JXred,%
-  LanguageMode=cn%
+  LanguageMode=cn,%
+  IconColor=light,%
+  ThemeColor=whucyan
 }
 
 \ProcessOptionsBeamer
@@ -250,7 +252,7 @@
 % Background Layout
 % ----------------
 % 设置了主题背景选项 "background=true" & "background=false".
-% 设置了页眉 logo.
+% 设置了页眉logo.
 % ----------------
 
 \if\EqualOptionsBeamer{AspectRatio}{1610}%
@@ -262,6 +264,12 @@
   \def\beamer@whu@bg{./images/background_169.png}
   \def\beamer@whu@bg@cover{./images/background_cover_169.png}
   \typeout{ratio set to 16:9.}
+\fi\fi
+
+\if\EqualOptionsBeamer{IconColor}{light}%
+  \def\beamer@whu@icon{./images/whulogo_light.eps}
+\else\if\EqualOptionsBeamer{IconColor}{dark}%
+  \def\beamer@whu@icon{./images/whulogo_dark.eps}
 \fi\fi
 
 % 设置 "background.png" 为图片 "bg".
@@ -278,8 +286,10 @@
 
 
 % 设置 "whulogo.png" 为图片 "logo".
-\pgfdeclareimage[width=6.25em]%
-  {lg}{./images/whulogo_light.png}
+% \pgfdeclareimage[width=6.25em]%
+%   {lg}{./images/whulogo_light.png}
+
+
 % ----------------
 
 % 设置定理环境
@@ -439,7 +449,7 @@
     \end{beamercolorbox}%
     \begin{beamercolorbox}[wd=0\paperwidth,ht=\@tempdimb]{subsection in head/foot}%
       \vspace*{1.3ex}\hspace*{-1.65cm}
-      \includegraphics[height=.7\@tempdimb]{images/whulogo_light.eps}
+      \includegraphics[height=.7\@tempdimb]{\beamer@whu@icon}
     \end{beamercolorbox}%    
   \fi%
 }

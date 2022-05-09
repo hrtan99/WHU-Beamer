@@ -53,6 +53,17 @@
 ] {WHU-Beamer}
 ```
 
+另外页眉的校徽也支持深色和浅色的选项，默认为浅色。如需要使用深色校徽，请指定`IconColor`参数为`dark`。
+
+```latex
+\usepackage [
+    ContentMuticols=false, % 目录是否分栏
+    AspectRatio=1610, % 页面比例
+    ThemeColor=whusakura, % 模板颜色 支持 whucyan | whusakura | thupuple | scured | scublue | scugreen | scuyellow .
+    IconColor=dark
+] {WHU-Beamer}
+```
+
 ### 关于引用
 
 请使用`\supercite`命令以启用上标引用。
