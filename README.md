@@ -41,13 +41,16 @@
 
 ### 模板颜色
 
-目前暂时支持武大的青色、清华的紫色以及川大模板中定义的几个颜色（whucyan、thupurple、scured、scublue、scuegreen、scuyellow）。
+目前暂时支持武大的珞珈青和樱花粉、清华的紫色以及川大模板中定义的几个颜色（whucyan、whusakura、thupurple、scured、scublue、scuegreen、scuyellow）。
 
-目前的版本中，如需要修改颜色，请直接修改样式文件中的下示代码，第二个参数用于指定颜色。未来的版本中会加入更多颜色，并将模板颜色作为参数传入。
+目前的版本中，如需要修改颜色，请在slide.tex文件中指定上述颜色。
 
 ```latex
-% 在此处设置主题颜色
-\colorlet{ThemeColor}{whucyan} 
+\usepackage [
+    ContentMuticols=false,
+    AspectRatio=1610,
+    ThemeColor=whusakura % 指定模板颜色. 支持 whucyan | whusakura | thupuple | scured | scublue | scugreen | scuyellow .
+] {WHU-Beamer}
 ```
 
 ### 关于引用
