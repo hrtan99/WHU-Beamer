@@ -98,6 +98,18 @@
 \colorlet{whucyan80}   {whucyan!80!white}
 \colorlet{whucyan90}   {whucyan!90!white}
 
+% COLOR:: 武大樱花粉 - whusakura 
+\definecolor{whusakura}{RGB}{255, 86, 119}
+\colorlet{whusakura10}   {whusakura!10!white}
+\colorlet{whusakura20}   {whusakura!20!white}
+\colorlet{whusakura30}   {whusakura!30!white}
+\colorlet{whusakura40}   {whusakura!40!white}
+\colorlet{whusakura50}   {whusakura!50!white}
+\colorlet{whusakura60}   {whusakura!60!white}
+\colorlet{whusakura70}   {whusakura!70!white}
+\colorlet{whusakura80}   {whusakura!80!white}
+\colorlet{whusakura90}   {whusakura!90!white}
+
 % COLOR:: 清华紫色 - thupurple
 \xdefinecolor{thupurple}{rgb}{0.455,0.204,0.506} 
 \colorlet{thupurple10}   {thupurple!10!white}
@@ -171,19 +183,6 @@
 \colorlet{scuyellow90}{scuyellow!90!white}
 % ----------------
 
-% 在此处设置主题颜色
-\colorlet{ThemeColor}{whucyan} 
-\colorlet{ThemeColor10}{ThemeColor!10!black}
-\colorlet{ThemeColor20}{ThemeColor!20!black}
-\colorlet{ThemeColor30}{ThemeColor!30!black}
-\colorlet{ThemeColor40}{ThemeColor!40!black}
-\colorlet{ThemeColor50}{ThemeColor!50!black}
-\colorlet{ThemeColor60}{ThemeColor!60!black}
-\colorlet{ThemeColor70}{ThemeColor!70!black}
-\colorlet{ThemeColor80}{ThemeColor!80!black}
-\colorlet{ThemeColor90}{ThemeColor!90!black}
-
-
 % 设置页面间距
 % \setbeamersize {
 %   text margin left=1.5cm,
@@ -206,6 +205,14 @@
 % VALUE:: 1610 | 169.
 % 注：1610表示16:10的比例；169表示16:9的比例。
 \DeclareOptionBeamer{AspectRatio}{\def\beamer@whu@AspectRatio{#1}}
+% KEY:: IconColor.
+% VALUE:: light | dark.
+% 注：浅色或深色校徽。
+\DeclareOptionBeamer{IconColor}{\def\beamer@whu@IconColor{#1}}
+% KEY:: ThemeColor.
+% VALUE:: whucyan | whusakura | thupuple | scured | scublue | scugreen | scuyellow.
+% 注：指定主题颜色。
+\DeclareOptionBeamer{ThemeColor}{\colorlet{ThemeColor}{#1}}
 
 
 % 展开后面的内容
@@ -221,7 +228,15 @@
 
 \ProcessOptionsBeamer
 
-
+\colorlet{ThemeColor10}{ThemeColor!10!black}
+\colorlet{ThemeColor20}{ThemeColor!20!black}
+\colorlet{ThemeColor30}{ThemeColor!30!black}
+\colorlet{ThemeColor40}{ThemeColor!40!black}
+\colorlet{ThemeColor50}{ThemeColor!50!black}
+\colorlet{ThemeColor60}{ThemeColor!60!black}
+\colorlet{ThemeColor70}{ThemeColor!70!black}
+\colorlet{ThemeColor80}{ThemeColor!80!black}
+\colorlet{ThemeColor90}{ThemeColor!90!black}
 
 \mode<presentation>
 
@@ -264,7 +279,7 @@
 
 % 设置 "whulogo.png" 为图片 "logo".
 \pgfdeclareimage[width=6.25em]%
-  {lg}{./images/whulogo.png}
+  {lg}{./images/whulogo_light.png}
 % ----------------
 
 % 设置定理环境
@@ -409,7 +424,7 @@
       \vspace*{1mm}\hspace*{-2mm}%
       \insertsectionnavigationhorizontal{.5\paperwidth}{}{\hskip0pt plus1filll}
     \end{beamercolorbox}%
-    \begin{beamercolorbox}[wd=.4\paperwidth,ht=\@tempdimb]{subsection in head/foot}%
+    \begin{beamercolorbox}[wd=.5\paperwidth,ht=\@tempdimb]{subsection in head/foot}%
       % \vbox to\@tempdimb{
       %   \vfil
       %   \insertsubsectionnavigation
@@ -422,9 +437,9 @@
         \vfill
       }%
     \end{beamercolorbox}%
-    \begin{beamercolorbox}[wd=.1\paperwidth,ht=\@tempdimb]{subsection in head/foot}%
-      \hspace*{-5ex}
-      \includegraphics[height=\@tempdimb]{images/whulogo.png}
+    \begin{beamercolorbox}[wd=0\paperwidth,ht=\@tempdimb]{subsection in head/foot}%
+      \vspace*{1.3ex}\hspace*{-1.65cm}
+      \includegraphics[height=.7\@tempdimb]{images/whulogo_light.eps}
     \end{beamercolorbox}%    
   \fi%
 }
