@@ -43,7 +43,7 @@
 
 目前暂时支持武大的珞珈青和樱花粉、清华的紫色以及川大模板中定义的几个颜色（whucyan、whusakura、thupurple、scured、scublue、scuegreen、scuyellow）。
 
-目前的版本中，如需要修改颜色，请在slide.tex文件中指定上述颜色。
+目前的版本中，如需要修改颜色，请在slide.tex文件中引入WHU-Beamer时指定上述颜色。
 
 ```latex
 \usepackage [
@@ -68,6 +68,8 @@
 ## 预览
 
 ![封面](preview/cover-preview.jpeg)
+
+![樱花粉封面](preview/whusakura.jpeg)
 
 ![目录](preview/contents-preview.jpeg)
 
